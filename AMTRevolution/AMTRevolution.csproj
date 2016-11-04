@@ -67,6 +67,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="main.cs" />
+    <Compile Include="ToolBox\AppSettings\AppSettings.cs" />
     <Compile Include="ToolBox\LanguageSelection\language.cs" />
     <Compile Include="ToolBox\UserControl\GlobalProperties.cs" />
     <Compile Include="ToolBox\UserControl\SettingsFile.cs" />
@@ -125,7 +126,6 @@
     <Resource Include="IconRes\WindowIcons\minimize_window-48.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ToolBox\LanguageSelection\Languages\" />
     <Folder Include="ToolBox\PermissionControl\" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="IconRes\MenuIcons\search-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ToolBox\LanguageSelection\Languages\AMTRevLangPT.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

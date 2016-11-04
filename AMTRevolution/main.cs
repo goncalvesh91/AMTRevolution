@@ -5,6 +5,7 @@
 using System.IO;
 using System.Windows;
 using AMTRevolution.ToolBox.UserControl;
+using AMTRevolution.ToolBox.AppSettings;
 
 namespace AMTRevolution
 {
@@ -15,7 +16,7 @@ namespace AMTRevolution
             // Initial AMTRevolution Checks
             // Check VF NW share access
             UserControl.InitializeUserProperties();
-            if(!Directory.Exists(@"\\vf-pt\fs\ANOC-UK\"))
+            if(!Directory.Exists(AppSettings.networkPath))
             {
                 switch(UserControl.userName)
                 {
@@ -25,6 +26,18 @@ namespace AMTRevolution
                     default: MessageBox.Show("Out of VF-NW", "Exiting...", MessageBoxButton.OK, MessageBoxImage.Error);break;
                 }
             }
+
+            // Check for updates to the GUI here
+            // ...
+            // ...
+
+            // Check for updates to the appCore here
+            // ...
+            // ...
+
+            // Run the app
+            MainWindow mainWin = new MainWindow();
+            mainWin.Show();
         }
     }
 }
