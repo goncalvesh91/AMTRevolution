@@ -7,7 +7,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace AMTRevolution.ToolBox.UserControl
+namespace AppCore.UserControl
 {
     public static class SettingsFile
 	{

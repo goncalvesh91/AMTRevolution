@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Threading;
 using System.IO;
 
-namespace AMTRevolution.ToolBox.UserControl
+namespace AppCore.UserControl
 {
 	/// <summary>
 	/// Description of GlobalProperties.

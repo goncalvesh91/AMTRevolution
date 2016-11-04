@@ -46,8 +46,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -67,11 +65,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="main.cs" />
-    <Compile Include="ToolBox\AppSettings\AppSettings.cs" />
-    <Compile Include="ToolBox\LanguageSelection\language.cs" />
-    <Compile Include="ToolBox\UserControl\GlobalProperties.cs" />
-    <Compile Include="ToolBox\UserControl\SettingsFile.cs" />
-    <Compile Include="ToolBox\UserControl\UserControl.cs" />
     <Page Include="GUI\aboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,9 +118,7 @@
     <Resource Include="IconRes\WindowIcons\menu-48.png" />
     <Resource Include="IconRes\WindowIcons\minimize_window-48.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ToolBox\PermissionControl\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="IconRes\WindowIcons\vf.ico" />
   </ItemGroup>
@@ -144,7 +135,10 @@
     <Resource Include="IconRes\MenuIcons\search-48.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ToolBox\LanguageSelection\Languages\AMTRevLangPT.xml" />
+    <ProjectReference Include="..\AppCore\AppCore.csproj">
+      <Project>{ec57907e-faa6-4d45-ac7b-d5407e65b904}</Project>
+      <Name>AppCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

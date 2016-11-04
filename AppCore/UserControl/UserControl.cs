@@ -5,9 +5,9 @@
 using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
 
-namespace AMTRevolution.ToolBox.UserControl
+namespace AppCore.UserControl
 {
-    class UserControl
+    public class UserControl
     {
         public static bool hasOICredentials
         {

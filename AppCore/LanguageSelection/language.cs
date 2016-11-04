@@ -1,4 +1,8 @@
-﻿namespace AMTRevolution.ToolBox.LanguageSelection
+﻿// AMTRevolution
+// Hugo Gonçalves
+// Rui Gonçalves
+
+namespace AppCore.LanguageSelection
 {
     // Class to set the AMT Revolution Language
     // ...

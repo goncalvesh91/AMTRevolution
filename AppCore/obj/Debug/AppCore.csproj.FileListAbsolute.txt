@@ -1,0 +1,6 @@
+C:\Users\Hugo Gonçalves\Documents\GitHub\AMTRevolution\AppCore\bin\Debug\AppCore.dll
+C:\Users\Hugo Gonçalves\Documents\GitHub\AMTRevolution\AppCore\bin\Debug\AppCore.pdb
+C:\Users\Hugo Gonçalves\Documents\GitHub\AMTRevolution\AppCore\obj\Debug\AppCore.csprojResolveAssemblyReference.cache
+C:\Users\Hugo Gonçalves\Documents\GitHub\AMTRevolution\AppCore\obj\Debug\AppCore.g.resources
+C:\Users\Hugo Gonçalves\Documents\GitHub\AMTRevolution\AppCore\obj\Debug\AppCore.dll
+C:\Users\Hugo Gonçalves\Documents\GitHub\AMTRevolution\AppCore\obj\Debug\AppCore.pdb

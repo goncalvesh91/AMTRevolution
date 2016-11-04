@@ -4,8 +4,8 @@
 
 using System.IO;
 using System.Windows;
-using AMTRevolution.ToolBox.UserControl;
-using AMTRevolution.ToolBox.AppSettings;
+using AppCore.UserControl;
+using AppCore.AppSettings;
 
 namespace AMTRevolution
 {
@@ -28,10 +28,12 @@ namespace AMTRevolution
             }
 
             // Check for updates to the GUI here
+            // TODO: GUI updater
             // ...
             // ...
 
             // Check for updates to the appCore here
+            // TODO: appCore updater
             // ...
             // ...
 
