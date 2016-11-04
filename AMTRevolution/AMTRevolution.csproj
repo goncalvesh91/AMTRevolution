@@ -71,7 +71,6 @@
     <Compile Include="ToolBox\UserControl\GlobalProperties.cs" />
     <Compile Include="ToolBox\UserControl\SettingsFile.cs" />
     <Compile Include="ToolBox\UserControl\UserControl.cs" />
-    <Compile Include="ToolBox\UserControl\UserFolder.cs" />
     <Page Include="GUI\aboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

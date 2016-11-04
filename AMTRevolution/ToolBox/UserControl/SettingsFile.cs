@@ -9,9 +9,6 @@ using System.Xml.Linq;
 
 namespace AMTRevolution.ToolBox.UserControl
 {
-    /// <summary>
-    /// Description of SettingsFile.
-    /// </summary>
     public static class SettingsFile
 	{
 //		public bool IsMainBackup { get; set; }
@@ -98,7 +95,7 @@ namespace AMTRevolution.ToolBox.UserControl
 			
 			document.Load(settingsFile.FullName);
 			
-			if (document.GetElementsByTagName("UserFolderPath").Count == 0) {
+			/*if (document.GetElementsByTagName("UserFolderPath").Count == 0) {
 				documentElement = document.DocumentElement;
 				element = document.CreateElement("UserFolderPath");
 				element.InnerText = UserFolder.FullName;
@@ -126,7 +123,7 @@ namespace AMTRevolution.ToolBox.UserControl
 				documentElement = document.DocumentElement;
 				element = document.CreateElement("OIPassword");
 				documentElement.AppendChild(element);
-			}
+			}*/
 			XmlNodeList elementsByTagName = document.GetElementsByTagName("StartCount");
 			if (elementsByTagName.Count != 0)
 				elementsByTagName[0].ParentNode.RemoveChild(elementsByTagName[0]);
@@ -137,7 +134,7 @@ namespace AMTRevolution.ToolBox.UserControl
 		static void CreateSettingsFile()
 		{
 			FileVersionInfo fileName = FileVersionInfo.GetVersionInfo(Process.GetCurrentProcess().MainModule.FileName);
-			new XDocument(
+			/*new XDocument(
 				new object[] {
 					new XElement("AMTSettings", new object[] {
 					             	new XElement("UserFolderPath", UserFolder.FullName),
@@ -146,7 +143,7 @@ namespace AMTRevolution.ToolBox.UserControl
 					             	new XElement("OIUsername"),
 					             	new XElement("OIPassword")
 					             })
-				}).Save(settingsFile.FullName);
+				}).Save(settingsFile.FullName);*/
 			settingsFile = new FileInfo(settingsFile.FullName);
 		}
 		
