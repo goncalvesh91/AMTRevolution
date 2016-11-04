@@ -11,9 +11,6 @@ namespace AMTRevolution.ToolBox.UserControl
 {
     public static class SettingsFile
 	{
-//		public bool IsMainBackup { get; set; }
-//		public int ImageNumber { get; set; }
-//		public int IncrementNumber { get; set; }
 		static FileInfo settingsFile { get; set; }
 		
 		public static string FullName {

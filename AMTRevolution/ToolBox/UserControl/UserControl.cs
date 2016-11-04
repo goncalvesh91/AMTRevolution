@@ -38,8 +38,8 @@ namespace AMTRevolution.ToolBox.UserControl
                 fullName[c] = fullName[c].Replace(",", string.Empty);
             department = GetUserDetails("Department").Contains("2nd Line RAN") ? "2nd Line RAN Support" : "1st Line RAN Support";
             //UserFolder.ResolveUserFolder();
-            SettingsFile.ResolveSettingsFile();
-            hasOICredentials = !string.IsNullOrEmpty(SettingsFile.OIUsername);
+            //SettingsFile.ResolveSettingsFile();
+            //hasOICredentials = !string.IsNullOrEmpty(SettingsFile.OIUsername);
             //UserFolder.Initialize();
         }
 
