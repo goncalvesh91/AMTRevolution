@@ -2,6 +2,7 @@
 // Hugo Gonçalves
 // Rui Gonçalves
 
+using System;
 using System.IO;
 using System.Windows;
 using AppCore.UserControl;
@@ -18,12 +19,12 @@ namespace AMTRevolution
             UserControl.InitializeUserProperties();
             if(!Directory.Exists(AppSettings.networkPath))
             {
-                switch(UserControl.userName)
+                switch(UserControl.userName.ToLower())
                 {
                     case "gonalvhf": case "goncarj3": case "Caramelos": case "Hugo Gonçalves":  MainWindow mainWindow = new MainWindow();
                                                                                                 mainWindow.ShowDialog();
                                                                                                 break;
-                    default: MessageBox.Show("Out of VF-NW", "Exiting...", MessageBoxButton.OK, MessageBoxImage.Error);break;
+                    default: MessageBox.Show("Out of VF-NW", "Exiting...", MessageBoxButton.OK, MessageBoxImage.Error);Environment.Exit(1);break;
                 }
             }
 
