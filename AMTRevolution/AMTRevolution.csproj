@@ -118,7 +118,9 @@
     <Resource Include="IconRes\WindowIcons\menu-48.png" />
     <Resource Include="IconRes\WindowIcons\minimize_window-48.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="IconRes\WindowIcons\resize_four_directions-48.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="IconRes\WindowIcons\vf.ico" />
   </ItemGroup>

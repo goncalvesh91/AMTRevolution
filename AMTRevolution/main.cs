@@ -21,7 +21,7 @@ namespace AMTRevolution
                 switch(UserControl.userName)
                 {
                     case "gonalvhf": case "goncarj3": case "Caramelos": case "Hugo Gonçalves":  MainWindow mainWindow = new MainWindow();
-                                                                                                mainWindow.Show();
+                                                                                                mainWindow.ShowDialog();
                                                                                                 break;
                     default: MessageBox.Show("Out of VF-NW", "Exiting...", MessageBoxButton.OK, MessageBoxImage.Error);break;
                 }
@@ -39,7 +39,7 @@ namespace AMTRevolution
 
             // Run the app
             MainWindow mainWin = new MainWindow();
-            mainWin.Show();
+            mainWin.ShowDialog();
         }
     }
 }
