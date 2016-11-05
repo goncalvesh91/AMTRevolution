@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AMTRevolution"
+        xmlns:splash="clr-namespace:AMTRevolution.GUI.SplashScreen"
         xmlns:gif="http://wpfanimatedgif.codeplex.com" x:Name="splashScreen1" x:Class="AMTRevolution.splashScreen"
         mc:Ignorable="d"
-        Title="splashScreen" Height="240" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Topmost="True" Icon="IconRes/WindowIcons/vf.ico">
+        Title="splashScreen" Height="240" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Topmost="True" Icon="../../IconRes/WindowIcons/vf.ico">
     <Grid Margin="0,0,0,0" RenderTransformOrigin="0,0" Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="13*"/>
@@ -15,11 +16,11 @@
         <Label x:Name="label" Content="AMT Revolution" HorizontalAlignment="Left" Margin="190,21.2,0,0" VerticalAlignment="Top" Foreground="#FFDDDDDD" FontFamily="Bauhaus 93" FontSize="16" Grid.Row="1" Width="120"/>
         <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="452,179.2,0,0" VerticalAlignment="Top" Width="38" BorderBrush="{x:Null}" Foreground="{x:Null}" Grid.Row="1" RenderTransformOrigin="1.016,1.565" Height="38">
             <Button.Background>
-                <ImageBrush Stretch="Uniform" ImageSource="IconRes/WindowIcons/vf.ico"/>
+                <ImageBrush Stretch="Uniform" ImageSource="../../IconRes/WindowIcons/vf.ico"/>
             </Button.Background>
         </Button>
-        <MediaElement x:Name="splashMedia" Source="IconRes/WindowIcons/Loading.gif" MediaEnded="myGif_MediaEnded" UnloadedBehavior="Play" LoadedBehavior="Play" HorizontalAlignment="Left" Height="100" Margin="200,59.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
-        <TextBlock x:Name="statusLabel" HorizontalAlignment="Left" Margin="10,179.2,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="133" Foreground="#FFDDDDDD"/>
+        <TextBlock x:Name="statusLabel" HorizontalAlignment="Left" Margin="10,179.2,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Please Wait..." VerticalAlignment="Top" Width="133" Foreground="#FFDDDDDD"/>
         <TextBlock x:Name="buildLabel" HorizontalAlignment="Left" Margin="10,200.2,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="#FFDDDDDD"/>
+        <splash:LoadingAnimation x:Name="Loader" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200,54.2,200,73" Height="100" Width="100" Grid.Row="1"/>
     </Grid>
 </Window>

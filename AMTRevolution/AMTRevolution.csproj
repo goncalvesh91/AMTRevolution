@@ -78,8 +78,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GUI\SplashScreen\Block.xaml.cs">
+      <DependentUpon>Block.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SplashScreen\LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="main.cs" />
-    <Compile Include="splashScreen.xaml.cs">
+    <Compile Include="GUI\SplashScreen\splashScreen.xaml.cs">
       <DependentUpon>splashScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="GUI\aboutWindow.xaml">
@@ -101,7 +107,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="splashScreen.xaml">
+    <Page Include="GUI\SplashScreen\Block.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\SplashScreen\LoadingAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\SplashScreen\splashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

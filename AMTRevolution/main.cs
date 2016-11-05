@@ -31,7 +31,7 @@ namespace AMTRevolution
             // ...
 
             // HACK: WAIT TIME TO SEE SPLASHSCREEN
-            Thread.Sleep(10000);
+
             // Initial AMTRevolution Checks
             // Check VF NW share access
             UserControl.InitializeUserProperties();
