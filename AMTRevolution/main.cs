@@ -16,10 +16,9 @@ namespace AMTRevolution
     {
         void AMTRevolution_Startup(object sender, StartupEventArgs e)
         {
-            // Open SplashScreen
             var splash = new splashScreen();
             var bgWorker = new BackgroundWorker();
-            // Do all work with bgWorker
+            // Do all the work with bgWorker
 
             // When all work is done close the splashscreen
             bgWorker.RunWorkerCompleted += (obj, e1) => 
@@ -30,32 +29,8 @@ namespace AMTRevolution
             // Work before launching main window
             bgWorker.DoWork += (obj, e1) =>
             {
-                // Check for updates to the GUI here
-                // TODO: GUI updater
-                // ...
-                // ...
-                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking for GUI updates..."; }));
-                // HACK: WAIT TIME TO SEE SPLASHSCREEN
-                for (long a = 0; a < 500000000; a++)
-                {
-                    double lol = 100000000000 / 2.123132123123;
-                }
-                // Check for updates to the appCore here
-                // TODO: appCore updater
-                // ...
-                // ...
-                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking for AppCore updates..."; }));
-
-                // HACK: WAIT TIME TO SEE SPLASHSCREEN
-                for(long a = 0; a < 500000000; a++)
-                {
-                    double lol = 100000000000 / 2.123132123123;
-                }
-                // Initial AMTRevolution Checks
-                // Check VF NW share access
-                // Initial AMTRevolution Checks
-                // Check VF NW share access
-                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Initial Checks..."; }));
+                // Check if outside VF NW
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Network check..."; }));
                 UserControl.InitializeUserProperties();
                 if (!Directory.Exists(AppSettings.networkPath))
                 {
@@ -65,21 +40,49 @@ namespace AMTRevolution
                         case "goncarj3":
                         case "caramelos":
                         case "hugo gonçalves":
-                            AppSettings.debugMode = true;
                             break;
                         default: MessageBox.Show("Out of VF-NW", "Exiting...", MessageBoxButton.OK, MessageBoxImage.Error); Environment.Exit(1); break;
                     }
                 }
+                // Check for updates to the GUI here
+                // TODO: GUI updater
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking for GUI updates..."; }));
+                // ...
+                // ...
+
+                // Check for updates to the appCore here
+                // TODO: appCore updater
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking for AppCore updates..."; }));
+                // ...
+                // ...
+
+
+                // User checks 
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Initial Checks..."; }));
                 // Ask to activate debug mode
                 switch (UserControl.userName.ToLower())
                 {
                     case "gonalvhf":
                     case "goncarj3":
+                    case "caramelos":
+                    case "hugo gonçalves":
                         var res = MessageBox.Show("Activate Debug Mode?", "Debug Mode", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if (res == MessageBoxResult.Yes)
                             AppSettings.debugMode = true;
                         break;
                 }
+
+                // TODO: Load user settings
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Loading user settings..."; }));
+                // ...
+                // ...
+
+                // TODO: Load Databases
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Loading databases..."; }));
+                // ...
+                // ...
+
+                // Initial loading finished
             };
             splash.buildLabel.Text = "Build " + Assembly.GetExecutingAssembly().GetName().Version;
             bgWorker.RunWorkerAsync();
