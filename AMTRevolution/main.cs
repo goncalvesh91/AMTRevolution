@@ -17,14 +17,16 @@ namespace AMTRevolution
             // Initial AMTRevolution Checks
             // Check VF NW share access
             UserControl.InitializeUserProperties();
-            if(!Directory.Exists(AppSettings.networkPath))
+            if (!Directory.Exists(AppSettings.networkPath))
             {
-                switch(UserControl.userName.ToLower())
+                switch (UserControl.userName.ToLower())
                 {
-                    case "gonalvhf": case "goncarj3": case "caramelos": case "hugo gonçalves":  MainWindow mainWindow = new MainWindow();
-                                                                                                mainWindow.ShowDialog();
-                                                                                                break;
-                    default: MessageBox.Show("Out of VF-NW", "Exiting...", MessageBoxButton.OK, MessageBoxImage.Error);Environment.Exit(1);break;
+                    case "gonalvhf": case "goncarj3": case "caramelos": case "hugo gonçalves":
+                        AppSettings.debugMode = true;
+                        MainWindow mainWindow = new MainWindow(AppSettings.debugMode);
+                        mainWindow.ShowDialog();
+                        break;
+                    default: MessageBox.Show("Out of VF-NW", "Exiting...", MessageBoxButton.OK, MessageBoxImage.Error); Environment.Exit(1); break;
                 }
             }
 
@@ -39,7 +41,17 @@ namespace AMTRevolution
             // ...
 
             // Run the app
-            MainWindow mainWin = new MainWindow();
+            // Ask to activate debug mode
+            switch (UserControl.userName.ToLower())
+            {
+                case "gonalvhf":
+                case "goncarj3":
+                    var res = MessageBox.Show("Activate Debug Mode?", "Debug Mode", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (res == MessageBoxResult.Yes)
+                        AppSettings.debugMode = true;
+                    break;
+            }
+            MainWindow mainWin = new MainWindow(AppSettings.debugMode);
             mainWin.ShowDialog();
         }
     }

@@ -54,5 +54,10 @@
                 <Button x:Name="exitMenuBtt" Content="Exit" ToolTip="Exit AMT Revolution" HorizontalAlignment="Left" Margin="0,305,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFDDDDDD" Height="30" Click="exitBtt_Click" BorderThickness="0,0,0,0"/>
             </Grid>
         </Grid>
+        <Button x:Name="debugModeBtt" Content="Button" HorizontalAlignment="Left" Margin="1027,545,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.501,1.878" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FFDDDDDD" Height="45" IsManipulationEnabled="True">
+            <Button.OpacityMask>
+                <ImageBrush Stretch="Uniform" ImageSource="/AMTRevolution;component/IconRes/WindowIcons/bug-48.png"/>
+            </Button.OpacityMask>
+        </Button>
     </Grid>
 </Window>

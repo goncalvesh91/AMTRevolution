@@ -12,9 +12,13 @@ namespace AMTRevolution
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(bool debugMode)
         {
             InitializeComponent();
+            if(!debugMode)
+            {
+                debugModeBtt.Visibility = Visibility.Collapsed;
+            }
         }
 
         #region bttActions

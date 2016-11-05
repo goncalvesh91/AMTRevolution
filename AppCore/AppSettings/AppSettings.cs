@@ -18,5 +18,8 @@ namespace AppCore.AppSettings
 
         // Main Menu state
         public static bool mainMenuState = false; // False = closed
+
+        // Debug mode state
+        public static bool debugMode = false;
     }
 }
