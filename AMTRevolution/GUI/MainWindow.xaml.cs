@@ -178,7 +178,7 @@ namespace AMTRevolution
             else
             {
                 labelCC.Text = "";
-                if (initCcTxtBox.Text.Length > 0 && initCcTxtBox.Text.Length < 15)
+                if (incCcTxtBox.Text.Length > 0 && incCcTxtBox.Text.Length < 15)
                 {
                     labelCC.Text = "Press ENTER key to complete INC number";
                 }

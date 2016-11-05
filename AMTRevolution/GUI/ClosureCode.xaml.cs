@@ -89,7 +89,7 @@ namespace AMTRevolution.GUI
             else
             {
                 labelCC.Text = "";
-                if (initCcTxtBox.Text.Length > 0 && initCcTxtBox.Text.Length < 15)
+                if (incCcTxtBox.Text.Length > 0 && incCcTxtBox.Text.Length < 15)
                 {
                     labelCC.Text = "ENTER to complete";
                 }
