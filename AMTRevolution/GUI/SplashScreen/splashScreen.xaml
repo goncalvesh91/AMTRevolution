@@ -7,7 +7,7 @@
         xmlns:splash="clr-namespace:AMTRevolution.GUI.SplashScreen"
         xmlns:gif="http://wpfanimatedgif.codeplex.com" x:Name="splashScreen1" x:Class="AMTRevolution.splashScreen"
         mc:Ignorable="d"
-        Title="splashScreen" Height="240" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Topmost="True" Icon="../../IconRes/WindowIcons/vf.ico">
+        Title="splashScreen" Height="240" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Icon="../../IconRes/WindowIcons/vf.ico">
     <Window.Resources>
         <Style x:Key="menuBtts" TargetType="Button">
         <Setter Property="Background" Value="Green"/>
