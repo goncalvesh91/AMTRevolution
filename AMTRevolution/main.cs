@@ -19,24 +19,20 @@ namespace AMTRevolution
             // Open SplashScreen
             var splash = new splashScreen();
             splash.buildLabel.Text = "Build " + Assembly.GetExecutingAssembly().GetName().Version;
-            splash.statusLabel.Text = ("Init...");
             splash.Show();
             // Check for updates to the GUI here
             // TODO: GUI updater
             // ...
             // ...
-            splash.updateStatus = "Checking for GUI updates..."; // TODO: Fix this, label does not update
 
             // Check for updates to the appCore here
             // TODO: appCore updater
             // ...
             // ...
-            splash.updateStatus = "Checking for AppCore updates..."; // TODO: Fix this, label does not update
 
             // HACK: WAIT TIME TO SEE SPLASHSCREEN
             Thread.Sleep(10000);
             // Initial AMTRevolution Checks
-            splash.updateStatus = "Initial Checks..."; // TODO: Fix this, label does not update
             // Check VF NW share access
             UserControl.InitializeUserProperties();
             if (!Directory.Exists(AppSettings.networkPath))
