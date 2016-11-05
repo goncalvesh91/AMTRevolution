@@ -13,7 +13,6 @@ namespace AMTRevolution.GUI
         public ClosureCode(string INC, string INIT, string CC)
         {
             InitializeComponent();
-            this.incCcTxtBox.Text = INC;
             this.initCcTxtBox.Text = INIT;
             this.CcTxtBox.Text = CC;
         }
@@ -131,6 +130,18 @@ namespace AMTRevolution.GUI
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        public void Show(Window owner)
+        {
+            this.Owner = owner;
+            this.Show();
+        }
+
+        public void ShowDialog(Window owner)
+        {
+            this.Owner = owner;
+            this.ShowDialog();
         }
     }
 }

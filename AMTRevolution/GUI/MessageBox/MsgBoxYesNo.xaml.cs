@@ -28,5 +28,17 @@ namespace AMTRevolution.GUI.MessageBox
             result = false;
             this.Close();
         }
+
+        public void Show(Window owner)
+        {
+            this.Owner = owner;
+            this.Show();
+        }
+
+        public void ShowDialog(Window owner)
+        {
+            this.Owner = owner;
+            this.ShowDialog();
+        }
     }
 }

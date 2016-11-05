@@ -29,7 +29,7 @@ namespace AMTRevolution
         private void exitBtt_Click(object sender, RoutedEventArgs e)
         {
             var msgBox = new MsgBoxYesNo("Are you sure?", "Exit");
-            msgBox.ShowDialog();
+            msgBox.ShowDialog(this);
             if (msgBox.result)
                 this.Close();
         }
@@ -90,7 +90,7 @@ namespace AMTRevolution
             ShowHideMenu("hideCCPanel", closureCodePanel);
             ccBtt.IsEnabled = true;
             var ccBox = new ClosureCode(incCcTxtBox.Text,initCcTxtBox.Text,CcTxtBox.Text);
-            ccBox.Show();
+            ccBox.Show(this);
         }
 
         private void minCcBtt_Click(object sender, RoutedEventArgs e)

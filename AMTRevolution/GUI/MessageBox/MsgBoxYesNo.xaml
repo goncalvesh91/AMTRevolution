@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AMTRevolution.GUI.MessageBox"
         mc:Ignorable="d"
-        Title="MsgBoxYesNo" Height="100" Width="200" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Icon="../../IconRes/WindowIcons/vf.ico" ResizeMode="NoResize">
+        Title="MsgBoxYesNo" Height="100" Width="200" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterOwner" Icon="../../IconRes/WindowIcons/vf.ico" ResizeMode="NoResize">
     <Window.Background>
         <SolidColorBrush Color="#4C808080"/>
     </Window.Background>
