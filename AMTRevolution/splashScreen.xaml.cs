@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AMTRevolution
 {
-    /// <summary>
-    /// Interaction logic for splashScreen.xaml
-    /// </summary>
     public partial class splashScreen : Window
     {
         public splashScreen()
         {
             InitializeComponent();
+        }
+
+        private void myGif_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            splashMedia.Position = new TimeSpan(0, 0, 1);
+            splashMedia.Play();
+        }
+
+        internal string updateStatus
+        {
+            get { return statusLabel.Text.ToString(); }
+            set { Dispatcher.Invoke(new Action(() => { statusLabel.Text = value; })); }
         }
     }
 }
