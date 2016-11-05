@@ -36,7 +36,7 @@ namespace AMTRevolution
 
         private void minBtt_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+            this.WindowState = WindowState.Minimized;
         }
 
         private void mainMenuBtt_Click(object sender, RoutedEventArgs e)
