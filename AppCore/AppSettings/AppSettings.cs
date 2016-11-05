@@ -14,7 +14,7 @@ namespace AppCore.AppSettings
     public class AppSettings
     {
         // Base network path
-        public const string networkPath = "\\\\vf-pt\\fs\\ANOC-UK\\";
+        public const string networkPath = @"\\vf-pt\fs\ANOC-UK\";
 
         // Main Menu state
         public static bool mainMenuState = false; // False = closed
