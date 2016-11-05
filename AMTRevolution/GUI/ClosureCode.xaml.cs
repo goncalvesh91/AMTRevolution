@@ -1,120 +1,31 @@
-﻿// AMTRevolution
-// Hugo Gonçalves
-// Rui Gonçalves
-
-using AppCore.AppSettings;
-using AppCore.Tools;
-using AMTRevolution.GUI.MessageBox;
-using AMTRevolution.GUI;
+﻿using AppCore.Tools;
 using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
 
-namespace AMTRevolution
+namespace AMTRevolution.GUI
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Interaction logic for ClosureCode.xaml
+    /// </summary>
+    public partial class ClosureCode : Window
     {
-        public MainWindow(bool debugMode)
+        public ClosureCode(string INC, string INIT, string CC)
         {
             InitializeComponent();
-            if (!debugMode)
-            {
-                debugModeBtt.Visibility = Visibility.Collapsed;
-            }
+            this.incCcTxtBox.Text = INC;
+            this.initCcTxtBox.Text = INIT;
+            this.CcTxtBox.Text = CC;
         }
 
-        #region bttActions
         private void exitBtt_Click(object sender, RoutedEventArgs e)
         {
-            var msgBox = new MsgBoxYesNo("Are you sure?", "Exit");
-            msgBox.ShowDialog();
-            if (msgBox.result)
-                this.Close();
+            this.Close();
         }
 
         private void minBtt_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.WindowState = WindowState.Minimized;
-        }
-
-        private void mainMenuBtt_Click(object sender, RoutedEventArgs e)
-        {
-            ShowHideMenu("showmainMenuPanel", mainMenuPanel);
-        }
-
-        private void settingsBtt_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void aboutBtt_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void searchSiteBtt_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void templatesBtt_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void netcoolParserBtt_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ccBtt_Click(object sender, RoutedEventArgs e)
-        {
-            ShowHideMenu("showCCPanel", closureCodePanel);
-            ccBtt.IsEnabled = false;
-        }
-
-        private void scriptsBtt_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void outagesBtt_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void detachCcBtt_Click(object sender, RoutedEventArgs e)
-        {
-            ShowHideMenu("hideCCPanel", closureCodePanel);
-            ccBtt.IsEnabled = true;
-            var ccBox = new ClosureCode(incCcTxtBox.Text,initCcTxtBox.Text,CcTxtBox.Text);
-            ccBox.Show();
-        }
-
-        private void minCcBtt_Click(object sender, RoutedEventArgs e)
-        {
-            ShowHideMenu("hideCCPanel", closureCodePanel);
-            ccBtt.IsEnabled = true;
-        }
-        #endregion
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            switch (AppSettings.mainMenuState)
-            {
-                case true: ShowHideMenu("hidemainMenuPanel", mainMenuPanel); AppSettings.mainMenuState = false; break;
-            }
-            if (e.ChangedButton == MouseButton.Left)
-                DragMove();
-        }
-
-        private void ShowHideMenu(string Storyboard, Grid pnl)
-        {
-            Storyboard sb = Resources[Storyboard] as Storyboard;
-            AppSettings.mainMenuState = true;
-            sb.Begin(pnl);
+            this.WindowState = WindowState.Minimized;
         }
 
         private void incCcTxtBox_KeyDown(object sender, KeyEventArgs e)
@@ -130,13 +41,14 @@ namespace AMTRevolution
                     }
                     else
                     {
-                        MessageBox.Show("INC number must only contain digits!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                        System.Windows.MessageBox.Show("INC number must only contain digits!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
         }
 
-        private void incCcTxtBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void incCcTxtBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             CcTxtBox.Text = "";
             if (incCcTxtBox.Text.Length == 15 & initCcTxtBox.Text.Length == 3)
@@ -169,7 +81,7 @@ namespace AMTRevolution
                 }
                 else
                 {
-                    MessageBox.Show("INC/CRQ can only contain numbers", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show("INC/CRQ can only contain numbers", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     initCcTxtBox.TextChanged -= initCcTxtBox_TextChanged;
                     initCcTxtBox.Text = "";
                     initCcTxtBox.TextChanged += initCcTxtBox_TextChanged;
@@ -180,19 +92,19 @@ namespace AMTRevolution
                 labelCC.Text = "";
                 if (initCcTxtBox.Text.Length > 0 && initCcTxtBox.Text.Length < 15)
                 {
-                    labelCC.Text = "Press ENTER key to complete INC number";
+                    labelCC.Text = "ENTER to complete";
                 }
                 else
                 {
                     if (initCcTxtBox.Text.Length != 15)
-                        labelCC.Text = "Insert INC/CRQ number";
+                        labelCC.Text = "Insert INC/CRQ";
                     else
                         labelCC.Text = "";
                 }
             }
         }
 
-        private void initCcTxtBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void initCcTxtBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (initCcTxtBox.Text.Length == 3 & incCcTxtBox.Text.Length == 15)
             {
@@ -213,6 +125,12 @@ namespace AMTRevolution
                     initCcTxtBox.TextChanged += initCcTxtBox_TextChanged;
                 }
             }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }
