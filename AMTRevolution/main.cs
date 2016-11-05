@@ -36,7 +36,7 @@ namespace AMTRevolution
                 // ...
                 splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking for GUI updates..."; }));
                 // HACK: WAIT TIME TO SEE SPLASHSCREEN
-                for (long a = 0; a < 1000000000; a++)
+                for (long a = 0; a < 500000000; a++)
                 {
                     double lol = 100000000000 / 2.123132123123;
                 }
@@ -47,7 +47,7 @@ namespace AMTRevolution
                 splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking for AppCore updates..."; }));
 
                 // HACK: WAIT TIME TO SEE SPLASHSCREEN
-                for(long a = 0; a < 1000000000; a++)
+                for(long a = 0; a < 500000000; a++)
                 {
                     double lol = 100000000000 / 2.123132123123;
                 }
@@ -55,7 +55,7 @@ namespace AMTRevolution
                 // Check VF NW share access
                 // Initial AMTRevolution Checks
                 // Check VF NW share access
-                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Inicial Checks..."; }));
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Initial Checks..."; }));
                 UserControl.InitializeUserProperties();
                 if (!Directory.Exists(AppSettings.networkPath))
                 {
@@ -83,7 +83,7 @@ namespace AMTRevolution
             };
             splash.buildLabel.Text = "Build " + Assembly.GetExecutingAssembly().GetName().Version;
             bgWorker.RunWorkerAsync();
-            splash.Closed += (obj, e1) =>
+            splash.Closing += (obj, e1) =>
             {
                 // Run the app when splash closes
                 MainWindow mainWin = new MainWindow(AppSettings.debugMode);

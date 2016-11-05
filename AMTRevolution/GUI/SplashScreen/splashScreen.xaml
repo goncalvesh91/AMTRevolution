@@ -8,13 +8,32 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com" x:Name="splashScreen1" x:Class="AMTRevolution.splashScreen"
         mc:Ignorable="d"
         Title="splashScreen" Height="240" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" Topmost="True" Icon="../../IconRes/WindowIcons/vf.ico">
+    <Window.Resources>
+        <Style x:Key="menuBtts" TargetType="Button">
+        <Setter Property="Background" Value="Green"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="DarkGoldenrod"/>
+            </Trigger>
+        </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid Margin="0,0,0,0" RenderTransformOrigin="0,0" Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="13*"/>
             <RowDefinition Height="228*"/>
         </Grid.RowDefinitions>
         <Label x:Name="label" Content="AMT Revolution" HorizontalAlignment="Left" Margin="190,21.2,0,0" VerticalAlignment="Top" Foreground="#FFDDDDDD" FontFamily="Bauhaus 93" FontSize="16" Grid.Row="1" Width="120"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="452,179.2,0,0" VerticalAlignment="Top" Width="38" BorderBrush="{x:Null}" Foreground="{x:Null}" Grid.Row="1" RenderTransformOrigin="1.016,1.565" Height="38">
+        <Button x:Name="button" Style="{StaticResource menuBtts}" Content="" HorizontalAlignment="Left" Margin="452,179.2,0,0" VerticalAlignment="Top" Width="38" BorderBrush="{x:Null}" Foreground="{x:Null}" Grid.Row="1" RenderTransformOrigin="1.016,1.565" Height="38">
             <Button.Background>
                 <ImageBrush Stretch="Uniform" ImageSource="../../IconRes/WindowIcons/vf.ico"/>
             </Button.Background>
