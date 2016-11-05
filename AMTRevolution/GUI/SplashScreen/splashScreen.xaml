@@ -19,7 +19,7 @@
                 <ImageBrush Stretch="Uniform" ImageSource="../../IconRes/WindowIcons/vf.ico"/>
             </Button.Background>
         </Button>
-        <TextBlock x:Name="statusLabel" HorizontalAlignment="Left" Margin="10,179.2,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Please Wait..." VerticalAlignment="Top" Width="133" Foreground="#FFDDDDDD"/>
+        <TextBlock x:Name="statusLabel" HorizontalAlignment="Left" Margin="10,179.2,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Please Wait..." VerticalAlignment="Top" Width="268" Foreground="#FFDDDDDD"/>
         <TextBlock x:Name="buildLabel" HorizontalAlignment="Left" Margin="10,200.2,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="#FFDDDDDD"/>
         <splash:LoadingAnimation x:Name="Loader" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200,54.2,200,73" Height="100" Width="100" Grid.Row="1"/>
     </Grid>

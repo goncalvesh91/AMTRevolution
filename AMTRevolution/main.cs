@@ -4,11 +4,11 @@
 
 using System;
 using System.IO;
+using System.Reflection;
+using System.ComponentModel;
 using System.Windows;
 using AppCore.UserControl;
 using AppCore.AppSettings;
-using System.Threading;
-using System.Reflection;
 
 namespace AMTRevolution
 {
@@ -18,53 +18,78 @@ namespace AMTRevolution
         {
             // Open SplashScreen
             var splash = new splashScreen();
-            splash.buildLabel.Text = "Build " + Assembly.GetExecutingAssembly().GetName().Version;
-            splash.Show();
-            // Check for updates to the GUI here
-            // TODO: GUI updater
-            // ...
-            // ...
+            var bgWorker = new BackgroundWorker();
+            // Do all work with bgWorker
 
-            // Check for updates to the appCore here
-            // TODO: appCore updater
-            // ...
-            // ...
-
-            // HACK: WAIT TIME TO SEE SPLASHSCREEN
-
-            // Initial AMTRevolution Checks
-            // Check VF NW share access
-            UserControl.InitializeUserProperties();
-            if (!Directory.Exists(AppSettings.networkPath))
+            // When all work is done close the splashscreen
+            bgWorker.RunWorkerCompleted += (obj, e1) => 
             {
+                splash.Close();
+            };
+
+            // Work before launching main window
+            bgWorker.DoWork += (obj, e1) =>
+            {
+                // Check for updates to the GUI here
+                // TODO: GUI updater
+                // ...
+                // ...
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking for GUI updates..."; }));
+                // HACK: WAIT TIME TO SEE SPLASHSCREEN
+                for (long a = 0; a < 1000000000; a++)
+                {
+                    double lol = 100000000000 / 2.123132123123;
+                }
+                // Check for updates to the appCore here
+                // TODO: appCore updater
+                // ...
+                // ...
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking for AppCore updates..."; }));
+
+                // HACK: WAIT TIME TO SEE SPLASHSCREEN
+                for(long a = 0; a < 1000000000; a++)
+                {
+                    double lol = 100000000000 / 2.123132123123;
+                }
+                // Initial AMTRevolution Checks
+                // Check VF NW share access
+                // Initial AMTRevolution Checks
+                // Check VF NW share access
+                splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Inicial Checks..."; }));
+                UserControl.InitializeUserProperties();
+                if (!Directory.Exists(AppSettings.networkPath))
+                {
+                    switch (UserControl.userName.ToLower())
+                    {
+                        case "gonalvhf":
+                        case "goncarj3":
+                        case "caramelos":
+                        case "hugo gonçalves":
+                            AppSettings.debugMode = true;
+                            break;
+                        default: MessageBox.Show("Out of VF-NW", "Exiting...", MessageBoxButton.OK, MessageBoxImage.Error); Environment.Exit(1); break;
+                    }
+                }
+                // Ask to activate debug mode
                 switch (UserControl.userName.ToLower())
                 {
                     case "gonalvhf":
                     case "goncarj3":
-                    case "caramelos":
-                    case "hugo gonçalves":
-                        AppSettings.debugMode = true;
-                        MainWindow mainWindow = new MainWindow(AppSettings.debugMode);
-                        splash.Close();
-                        mainWindow.ShowDialog();
+                        var res = MessageBox.Show("Activate Debug Mode?", "Debug Mode", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (res == MessageBoxResult.Yes)
+                            AppSettings.debugMode = true;
                         break;
-                    default: MessageBox.Show("Out of VF-NW", "Exiting...", MessageBoxButton.OK, MessageBoxImage.Error); Environment.Exit(1); break;
                 }
-            }
-            // Run the app
-            // Ask to activate debug mode
-            switch (UserControl.userName.ToLower())
+            };
+            splash.buildLabel.Text = "Build " + Assembly.GetExecutingAssembly().GetName().Version;
+            bgWorker.RunWorkerAsync();
+            splash.Closed += (obj, e1) =>
             {
-                case "gonalvhf":
-                case "goncarj3":
-                    var res = MessageBox.Show("Activate Debug Mode?", "Debug Mode", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (res == MessageBoxResult.Yes)
-                        AppSettings.debugMode = true;
-                    break;
-            }
-            MainWindow mainWin = new MainWindow(AppSettings.debugMode);
-            splash.Close();
-            mainWin.ShowDialog();
+                // Run the app when splash closes
+                MainWindow mainWin = new MainWindow(AppSettings.debugMode);
+                mainWin.Show();
+            };
+            splash.ShowDialog();
         }
     }
 }
