@@ -7,9 +7,9 @@ using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using AppCore.AppEvent;
 using AppCore.AppSettings;
 using AppCore.UserControl;
-using AMTRevolution.GUI.MessageBox;
 
 namespace AMTRevolution
 {
@@ -30,6 +30,7 @@ namespace AMTRevolution
 			// Work before launching main window
 			bgWorker.DoWork += (obj, e1) =>
 			{
+				var eventHandler = new appEvent(AppSettings.appEventsPath);
 				// Check if outside VF NW
 				splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Network check..."; }));
 				UserControl.InitializeUserProperties();
@@ -87,13 +88,13 @@ namespace AMTRevolution
 						switch(userSettings.errorLevel)
 						{
 								case 0 : splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Settings loaded from share backup"; })); break; // No errors
-								case 1 : Environment.Exit(1); break; // TODO: Add event to app log
-								case 2 : Environment.Exit(1); break; // TODO: Add event to app log
-								case 3 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
-								case 4 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
-								case 5 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
-								case 6 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
-								default: Environment.Exit(1); break; // TODO: Add event to app log
+								case 1 : eventHandler.addAppEvent(DateTime.Now,"Failed to create AMTRevolution dir"); Environment.Exit(1); break;
+								case 2 : eventHandler.addAppEvent(DateTime.Now,"Failed to create user dir"); Environment.Exit(1); break; 
+								case 3 : eventHandler.addAppEvent(DateTime.Now,"No backup settings in share, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
+								case 4 : eventHandler.addAppEvent(DateTime.Now,"Failed to download backup settings, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
+								case 5 : eventHandler.addAppEvent(DateTime.Now,"Failed to load downloaded settings, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
+								case 6 : eventHandler.addAppEvent(DateTime.Now,"Failed to load settings, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
+								default: eventHandler.addAppEvent(DateTime.Now,"Unknow error"); Environment.Exit(1); break;
 						}
 						goto LOADUSERSETTINGS;
 					}
@@ -101,7 +102,7 @@ namespace AMTRevolution
 					// Check if settings matches user
 					if(!userSettings.USW.userId.Equals(UserControl.userName, StringComparison.InvariantCultureIgnoreCase))
 					{ // Does not match
-						// TODO: Add event to app log
+						eventHandler.addAppEvent(DateTime.Now,"User settings do not match current user");
 						Environment.Exit(1);
 					}
 					// TODO: Load Databases
