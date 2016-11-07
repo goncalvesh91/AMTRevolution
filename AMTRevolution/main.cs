@@ -10,6 +10,7 @@ using System.Windows;
 using AppCore.AppEvent;
 using AppCore.AppSettings;
 using AppCore.UserControl;
+using AppCore.FileWriter;
 
 namespace AMTRevolution
 {
@@ -75,6 +76,7 @@ namespace AMTRevolution
 				}
 				// TODO: Check user permissions, exit here if user is not allowed!
 				splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking user permissions..."; }));
+				var permChecker = new permissionsWriter();
 				// ..
 				// ..
 				if(!AppSettings.debugMode)

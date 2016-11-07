@@ -29,6 +29,9 @@ namespace AppCore.AppSettings
 		public static string appEventsPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AMTRevolution";
 
 		// App Events path in network
-		public static string appEventsNetworkPath = @"\\vf-pt\fs\ANOC-UK\ANOC-UK 1st LINE\1. RAN 1st LINE\AMTRevolution\usersettings";
+		public const string appEventsNetworkPath = @"\\vf-pt\fs\ANOC-UK\ANOC-UK 1st LINE\1. RAN 1st LINE\AMTRevolution\usersettings";
+		
+		// App Events path in network
+		public const string permissionsFilePath = @"\\vf-pt\fs\ANOC-UK\ANOC-UK 1st LINE\1. RAN 1st LINE\AMTRevolution\permissions\permissions.xbin";
 	}
 }
