@@ -76,46 +76,48 @@ namespace AMTRevolution
 				splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking user permissions..."; }));
 				// ..
 				// ..
-				
-				splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Loading user settings..."; }));
-			LOADUSERSETTINGS:
-				var userSettings = new UserSettings(UserControl.userName.ToLower()); // this will try to load the user settings
-				
-				if(!userSettings.isLoaded)
+				if(!AppSettings.debugMode)
 				{
-					switch(userSettings.errorLevel)
+					splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Loading user settings..."; }));
+				LOADUSERSETTINGS:
+					var userSettings = new UserSettings(UserControl.userName.ToLower()); // this will try to load the user settings
+					
+					if(!userSettings.isLoaded)
 					{
-							case 0 : splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Settings loaded from share backup"; })); break; // No errors
-							case 1 : Environment.Exit(1); break; // TODO: Add event to app log
-							case 2 : Environment.Exit(1); break; // TODO: Add event to app log
-							case 3 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
-							case 4 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
-							case 5 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
-							case 6 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
-							default: Environment.Exit(1); break; // TODO: Add event to app log
+						switch(userSettings.errorLevel)
+						{
+								case 0 : splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Settings loaded from share backup"; })); break; // No errors
+								case 1 : Environment.Exit(1); break; // TODO: Add event to app log
+								case 2 : Environment.Exit(1); break; // TODO: Add event to app log
+								case 3 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
+								case 4 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
+								case 5 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
+								case 6 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
+								default: Environment.Exit(1); break; // TODO: Add event to app log
+						}
+						goto LOADUSERSETTINGS;
 					}
-					goto LOADUSERSETTINGS;
-				}
 
-				// Check if settings matches user
-				if(!userSettings.USW.userId.Equals(UserControl.userName, StringComparison.InvariantCultureIgnoreCase))
-				{ // Does not match
-					// TODO: Add event to app log
-					Environment.Exit(1);
-				}
-				// TODO: Load Databases
-				splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Loading databases..."; }));
-				// ...
-				// ...
+					// Check if settings matches user
+					if(!userSettings.USW.userId.Equals(UserControl.userName, StringComparison.InvariantCultureIgnoreCase))
+					{ // Does not match
+						// TODO: Add event to app log
+						Environment.Exit(1);
+					}
+					// TODO: Load Databases
+					splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Loading databases..."; }));
+					// ...
+					// ...
 
-				// Initial loading finished
+					// Initial loading finished
+				}
 			};
 			splash.buildLabel.Text = "Build " + Assembly.GetExecutingAssembly().GetName().Version;
 			bgWorker.RunWorkerAsync();
 			splash.Closing += (obj, e1) =>
 			{
 				// Run the app when splash closes
-				MainWindow mainWin = new MainWindow(AppSettings.debugMode);
+				var mainWin = new MainWindow(AppSettings.debugMode);
 				mainWin.Show();
 			};
 			splash.ShowDialog();
