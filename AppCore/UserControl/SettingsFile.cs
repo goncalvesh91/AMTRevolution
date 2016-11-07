@@ -86,13 +86,13 @@ namespace AppCore.UserControl
 		
 		static void CheckXMLIntegrity()
 		{
-			XmlNode documentElement;
+			/*XmlNode documentElement;
 			XmlElement element;
 			XmlDocument document = new XmlDocument();
 			
 			document.Load(settingsFile.FullName);
 			
-			/*if (document.GetElementsByTagName("UserFolderPath").Count == 0) {
+			if (document.GetElementsByTagName("UserFolderPath").Count == 0) {
 				documentElement = document.DocumentElement;
 				element = document.CreateElement("UserFolderPath");
 				element.InnerText = UserFolder.FullName;
@@ -120,12 +120,12 @@ namespace AppCore.UserControl
 				documentElement = document.DocumentElement;
 				element = document.CreateElement("OIPassword");
 				documentElement.AppendChild(element);
-			}*/
+			}
 			XmlNodeList elementsByTagName = document.GetElementsByTagName("StartCount");
 			if (elementsByTagName.Count != 0)
 				elementsByTagName[0].ParentNode.RemoveChild(elementsByTagName[0]);
 			
-			document.Save(settingsFile.FullName);
+			document.Save(settingsFile.FullName);*/
 		}
 
 		static void CreateSettingsFile()

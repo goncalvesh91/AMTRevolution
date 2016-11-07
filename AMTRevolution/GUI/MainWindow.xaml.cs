@@ -2,15 +2,16 @@
 // Hugo Gonçalves
 // Rui Gonçalves
 
-using AppCore.AppSettings;
-using AppCore.Tools;
-using AMTRevolution.GUI.MessageBox;
-using AMTRevolution.GUI;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using AppCore.AppSettings;
+using AppCore.Tools;
+using AMTRevolution.GUI;
+using AMTRevolution.GUI.MessageBox;
+using AppCore.UserControl;
 
 namespace AMTRevolution
 {

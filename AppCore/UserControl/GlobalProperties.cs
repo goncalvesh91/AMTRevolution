@@ -37,8 +37,8 @@ namespace AppCore.UserControl
 					//MainForm.trayIcon.toggleShareAccess();
 			}
 		}
-		static bool _siteFinder_mainswitch = true;
-		/*public static bool siteFinder_mainswitch {
+		/*static bool _siteFinder_mainswitch = true;
+		public static bool siteFinder_mainswitch {
 			get {
 				return _siteFinder_mainswitch;
 			}
