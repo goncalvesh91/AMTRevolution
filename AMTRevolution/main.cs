@@ -85,6 +85,7 @@ namespace AMTRevolution
 				{
 					switch(userSettings.errorLevel)
 					{
+							case 0 : splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Settings loaded from share backup"; })); break; // No errors
 							case 1 : Environment.Exit(1); break; // TODO: Add event to app log
 							case 2 : Environment.Exit(1); break; // TODO: Add event to app log
 							case 3 : userSettings.generateUserSettings(UserControl.userName.ToLower()); break; // TODO: Add event to app log
@@ -95,6 +96,7 @@ namespace AMTRevolution
 					}
 					goto LOADUSERSETTINGS;
 				}
+
 				// Check if settings matches user
 				if(!userSettings.USW.userId.Equals(UserControl.userName, StringComparison.InvariantCultureIgnoreCase))
 				{ // Does not match

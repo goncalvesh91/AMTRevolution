@@ -17,6 +17,8 @@
     <NoStdLib>False</NoStdLib>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <NoWarn>168</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,6 +63,7 @@
     <Compile Include="AppCore.cs" />
     <Compile Include="AppSettings\AppSettings.cs" />
     <Compile Include="AppEvent\appEvent.cs" />
+    <Compile Include="FileWriter\permissionsWriter.cs" />
     <Compile Include="FileWriter\userSettingsWriter.cs" />
     <Compile Include="LanguageSelection\language.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

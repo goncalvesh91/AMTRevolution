@@ -57,6 +57,21 @@ namespace AppCore.UserControl
 									reason = "No settings backup on share";
 								}
 							}
+							else
+							{
+								try
+								{
+									Directory.CreateDirectory(userSettingsNetworkPath);
+									generateUserSettings(userId);
+								}
+								catch(Exception mknetdirEx)
+								{
+									isLoaded = false;
+									errorLevel = 2;
+									reason = "Failed to create user folder in share" + Environment.NewLine;
+									reason += mknetdirEx.Message;
+								}
+							}
 						}
 						catch(Exception mkdirEx)
 						{
@@ -225,9 +240,24 @@ namespace AppCore.UserControl
 		public void generateUserSettings(string userId)
 		{
 			var userSettingsPath = AppSettings.AppSettings.userSettingsPath + "\\" + userId.ToUpper() + "\\settings.xbin";
+			var userSettingsNetworkPath = AppSettings.AppSettings.userSettingsNetworkPath + "\\" + userId.ToUpper() + "\\settings.xbin";
 			var usw = new userSettingsWriter(userSettingsPath);
 			var uSf = new userSettingsWriter.userSettings(userId,"empty","empty");
 			usw.writeUserSettings(uSf,userSettingsPath);
-		}		
+			backupSettings(userSettingsPath,userSettingsNetworkPath);
+		}
+
+		private bool backupSettings(string source, string dest)
+		{
+			try
+			{
+				File.Copy(source,dest);
+				return true;
+			}
+			catch(Exception fBEx)
+			{
+				return false;
+			}
+		}
 	}
 }
