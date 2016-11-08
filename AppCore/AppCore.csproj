@@ -52,7 +52,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
-    <Reference Include="System.Windows" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,9 +64,16 @@
     <Compile Include="AppCore.cs" />
     <Compile Include="AppSettings\AppSettings.cs" />
     <Compile Include="AppEvent\appEvent.cs" />
+    <Compile Include="DebugGUI\EventViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugGUI\EventViewer.Designer.cs">
+      <DependentUpon>EventViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileWriter\permissionsWriter.cs" />
     <Compile Include="FileWriter\userSettingsWriter.cs" />
     <Compile Include="LanguageSelection\language.cs" />
+    <Compile Include="PermissionControl\permissionControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\closureCode.cs" />
     <Compile Include="Tools\tools.cs" />
@@ -78,9 +86,9 @@
     <Resource Include="LanguageSelection\Languages\AMTRevLangPT.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FileWriter" />
-    <Folder Include="AppEvent" />
-    <Folder Include="PermissionControl\" />
+    <EmbeddedResource Include="DebugGUI\EventViewer.resx">
+      <DependentUpon>EventViewer.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

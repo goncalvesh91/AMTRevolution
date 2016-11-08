@@ -5,6 +5,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using AppCore.AppSettings;
@@ -12,6 +13,8 @@ using AppCore.Tools;
 using AMTRevolution.GUI;
 using AMTRevolution.GUI.MessageBox;
 using AppCore.UserControl;
+using AppCore.DebugGUI;
+using System.Windows.Interop;
 
 namespace AMTRevolution
 {
@@ -90,7 +93,7 @@ namespace AMTRevolution
         {
             ShowHideMenu("hideCCPanel", closureCodePanel);
             ccBtt.IsEnabled = true;
-            var ccBox = new ClosureCode(incCcTxtBox.Text,initCcTxtBox.Text,CcTxtBox.Text);
+            var ccBox = new ClosureCode(incCcTxtBox.Text, initCcTxtBox.Text, CcTxtBox.Text);
             ccBox.Show(this);
         }
 
@@ -98,6 +101,12 @@ namespace AMTRevolution
         {
             ShowHideMenu("hideCCPanel", closureCodePanel);
             ccBtt.IsEnabled = true;
+        }
+
+        private void debugModeBtt_Click(object sender, RoutedEventArgs e)
+        {
+            var evLs = new EventViewer();
+            evLs.ShowDialog();
         }
         #endregion
 
@@ -118,7 +127,7 @@ namespace AMTRevolution
             sb.Begin(pnl);
         }
 
-        private void incCcTxtBox_KeyDown(object sender, KeyEventArgs e)
+        private void incCcTxtBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -131,7 +140,7 @@ namespace AMTRevolution
                     }
                     else
                     {
-                        MessageBox.Show("INC number must only contain digits!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        System.Windows.MessageBox.Show("INC number must only contain digits!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -170,7 +179,7 @@ namespace AMTRevolution
                 }
                 else
                 {
-                    MessageBox.Show("INC/CRQ can only contain numbers", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show("INC/CRQ can only contain numbers", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     initCcTxtBox.TextChanged -= initCcTxtBox_TextChanged;
                     initCcTxtBox.Text = "";
                     initCcTxtBox.TextChanged += initCcTxtBox_TextChanged;

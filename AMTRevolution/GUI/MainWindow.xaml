@@ -101,7 +101,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <Button x:Name="debugModeBtt" Content="Button" ToolTip="Debug Mode Enabled" HorizontalAlignment="Left" Margin="1027,545,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.501,1.878" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FFDDDDDD" Height="45" IsManipulationEnabled="True">
+        <Button x:Name="debugModeBtt" Content="Button" ToolTip="Debug Mode Enabled" HorizontalAlignment="Left" Margin="1027,545,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="0.501,1.878" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="#FFDDDDDD" Height="45" IsManipulationEnabled="True" Click="debugModeBtt_Click">
             <Button.OpacityMask>
                 <ImageBrush Stretch="Uniform" ImageSource="/AMTRevolution;component/IconRes/WindowIcons/bug-48.png"/>
             </Button.OpacityMask>
