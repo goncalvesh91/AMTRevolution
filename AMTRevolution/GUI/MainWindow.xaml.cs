@@ -41,7 +41,8 @@ namespace AMTRevolution
         public static void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             var eventHandler = new appEvent(AppSettings.appEventsPath);
-            eventHandler.routineEventBackupToShare(AppCore.UserControl.UserControl.userName);
+            if (eventHandler.routineEventBackupToShare(AppCore.UserControl.UserControl.userName))
+                eventHandler.addAppEvent(DateTime.Now, "Notification", AppCore.UserControl.UserControl.userName, Environment.MachineName, "AppEvent backup to share performed");
         }
 
         #region bttActions

@@ -99,15 +99,15 @@ namespace AppCore.AppEvent
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
             public string compName;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 15000)]
-            public string error;
+            public string message;
 
-            public appEventEntry(DateTime _timeStamp, string _entryType, string _userName, string _compName, string _error)
+            public appEventEntry(DateTime _timeStamp, string _entryType, string _userName, string _compName, string _message)
             {
                 this.timeStamp = _timeStamp.ToString();
                 this.entryType = _entryType;
                 this.userName = _userName;
                 this.compName = _compName;
-                this.error = _error;
+                this.message = _message;
             }
         }
     }
