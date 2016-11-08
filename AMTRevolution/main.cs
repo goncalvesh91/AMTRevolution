@@ -11,7 +11,6 @@ using AppCore.AppEvent;
 using AppCore.AppSettings;
 using AppCore.UserControl;
 using AppCore.PermissionControl;
-using AppCore.FileWriter;
 
 namespace AMTRevolution
 {
@@ -21,7 +20,7 @@ namespace AMTRevolution
         {
             var splash = new splashScreen();
             var bgWorker = new BackgroundWorker();
-            // Do all the work with bgWorker
+            // Do all the initial work with bgWorker
 
             // When all work is done close the splashscreen
             bgWorker.RunWorkerCompleted += (obj, e1) =>
@@ -85,14 +84,14 @@ namespace AMTRevolution
                     {
                         switch (userSettings.errorLevel)
                         {
-                            case 0: splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Settings loaded from share backup"; })); break; // No errors
-                            case 1: eventHandler.addAppEvent(DateTime.Now, "Failed to create AMTRevolution dir"); Environment.Exit(1); break;
-                            case 2: eventHandler.addAppEvent(DateTime.Now, "Failed to create user dir"); Environment.Exit(1); break;
-                            case 3: eventHandler.addAppEvent(DateTime.Now, "No backup settings in share, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
-                            case 4: eventHandler.addAppEvent(DateTime.Now, "Failed to download backup settings, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
-                            case 5: eventHandler.addAppEvent(DateTime.Now, "Failed to load downloaded settings, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
-                            case 6: eventHandler.addAppEvent(DateTime.Now, "Failed to load settings, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
-                            default: eventHandler.addAppEvent(DateTime.Now, "Unknow error"); Environment.Exit(1); break;
+                            case 0: eventHandler.addAppEvent(DateTime.Now, "Notification", UserControl.userName, "Settings loaded from share backup"); splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Settings loaded from share backup"; })); break; // No errors
+                            case 1: eventHandler.addAppEvent(DateTime.Now, "Error", UserControl.userName, "Failed to create AMTRevolution dir"); Environment.Exit(1); break;
+                            case 2: eventHandler.addAppEvent(DateTime.Now, "Error", UserControl.userName, "Failed to create user dir"); Environment.Exit(1); break;
+                            case 3: eventHandler.addAppEvent(DateTime.Now, "Error", UserControl.userName, "No backup settings in share, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
+                            case 4: eventHandler.addAppEvent(DateTime.Now, "Error", UserControl.userName, "Failed to download backup settings, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
+                            case 5: eventHandler.addAppEvent(DateTime.Now, "Error", UserControl.userName, "Failed to load downloaded settings, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
+                            case 6: eventHandler.addAppEvent(DateTime.Now, "Error", UserControl.userName, "Failed to load settings, using default settings"); userSettings.generateUserSettings(UserControl.userName.ToLower()); break;
+                            default: eventHandler.addAppEvent(DateTime.Now, "Error", UserControl.userName, "Unknow error"); Environment.Exit(1); break;
                         }
                         goto LOADUSERSETTINGS;
                     }
@@ -100,12 +99,12 @@ namespace AMTRevolution
                     // Check if settings matches user
                     if (!userSettings.USW.userId.Equals(UserControl.userName, StringComparison.InvariantCultureIgnoreCase))
                     { // Does not match
-                        eventHandler.addAppEvent(DateTime.Now, "User settings do not match current user");
+                        eventHandler.addAppEvent(DateTime.Now, "Error", UserControl.userName, "User settings do not match current user");
                         Environment.Exit(1);
                     }
                     // TODO: Check user permissions, exit here if user is not allowed!
                     splash.Dispatcher.BeginInvoke(new Action(() => { splash.statusLabel.Text = "Checking user permissions..."; }));
-                    var permControl = new permissionControl();
+                    var permControl = new permissionControl(UserControl.userName);
                     // ..
                     // ..
 
