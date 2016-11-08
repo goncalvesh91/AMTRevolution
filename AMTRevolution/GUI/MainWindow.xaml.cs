@@ -5,16 +5,15 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using AppCore.AppSettings;
 using AppCore.Tools;
 using AMTRevolution.GUI;
 using AMTRevolution.GUI.MessageBox;
-using AppCore.UserControl;
 using AppCore.DebugGUI;
-using System.Windows.Interop;
+using System.Timers;
+using AppCore.AppEvent;
 
 namespace AMTRevolution
 {
@@ -26,7 +25,23 @@ namespace AMTRevolution
             if (!debugMode)
             {
                 debugModeBtt.Visibility = Visibility.Collapsed;
+                // Start routine in the background to copy AppEvents to share if possible
+                var bgWokerEvl = new AbortableBackgroundWorker();
+                bgWokerEvl.DoWork += (obj, e1) =>
+                {
+                    // use a timer to try every 5minutes
+                    var timer = new System.Timers.Timer();
+                    timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+                    timer.Interval = 300000;
+                    timer.Enabled = true;
+                };
             }
+        }
+
+        public static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            var eventHandler = new appEvent(AppSettings.appEventsPath);
+            eventHandler.routineEventBackupToShare(AppCore.UserControl.UserControl.userName);
         }
 
         #region bttActions

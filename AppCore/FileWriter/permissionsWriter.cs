@@ -12,6 +12,7 @@ namespace AppCore.FileWriter
 {
     public class permissionsWriter
     {
+        private string userName { get; set; }
         public permissionsWriter()
         {
             // Check if permissions file exists, if not create it
@@ -21,8 +22,9 @@ namespace AppCore.FileWriter
             }
         }
 
-        public List<userPermission> getPermissionsList()
+        public List<userPermission> getPermissionsList(string userId)
         {
+            userName = userId;
             var eventHandler = new AppEvent.appEvent(AppSettings.AppSettings.appEventsPath);
             try
             {
@@ -34,7 +36,7 @@ namespace AppCore.FileWriter
             }
             catch(Exception getPermEx)
             {
-                eventHandler.addAppEvent(DateTime.Now, "Failed to read the permissions file" + Environment.NewLine + getPermEx.Message);
+                eventHandler.addAppEvent(DateTime.Now, "Error", userId, "Failed to read the permissions file" + Environment.NewLine + getPermEx.Message);
                 return null;
             }
         }
@@ -62,7 +64,7 @@ namespace AppCore.FileWriter
             catch (Exception ex)
             {
                 var eventHandler = new AppEvent.appEvent(AppSettings.AppSettings.appEventsPath);
-                eventHandler.addAppEvent(DateTime.Now, "Failed to generate permissions files");
+                eventHandler.addAppEvent(DateTime.Now, "Error", this.userName, "Failed to generate permissions files");
                 return false;
             }
         }

@@ -31,10 +31,29 @@ namespace AppCore.AppEvent
             return returnVal;
         }
 
-        public bool addAppEvent(DateTime timeStamp, string error)
+        public bool routineEventBackupToShare(string userId)
+        {
+            if (Directory.Exists(AppSettings.AppSettings.appEventsNetworkPath))
+            {
+                try
+                {
+                    File.Copy(AppSettings.AppSettings.appEventsPath, AppSettings.AppSettings.appEventsNetworkPath);
+                    return true;
+                }
+                catch (Exception evBckEx)
+                {
+                    var eventHandler = new appEvent(AppSettings.AppSettings.appEventsPath);
+                    eventHandler.addAppEvent(DateTime.Now, "Error", userId, "Failed to backup events to share drive");
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public bool addAppEvent(DateTime timeStamp, string eventType, string userName, string error)
         {
             // New event
-            var nEvent = new appEventEntry(timeStamp, error);
+            var nEvent = new appEventEntry(timeStamp, eventType, userName, error);
             var eventFile = new List<appEventEntry>();
             try
             {
@@ -73,12 +92,18 @@ namespace AppCore.AppEvent
         {
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
             public string timeStamp;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
+            public string entryType;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
+            public string userName;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 15000)]
             public string error;
 
-            public appEventEntry(DateTime _timeStamp, string _error)
+            public appEventEntry(DateTime _timeStamp, string _entryType, string _userName, string _error)
             {
                 this.timeStamp = _timeStamp.ToString();
+                this.entryType = _entryType;
+                this.userName = _userName;
                 this.error = _error;
             }
         }

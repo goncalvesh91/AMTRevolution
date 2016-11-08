@@ -12,10 +12,10 @@ namespace AppCore.PermissionControl
         private List<FileWriter.permissionsWriter.userPermission> globalPermissions { get; set; }
 
         // Init class, here it is called the permissionsWriter class which reads/creates the permissions.xbin
-        public permissionControl()
+        public permissionControl(string userId)
         {
             var permWriter = new FileWriter.permissionsWriter();
-            var globalPerms = permWriter.getPermissionsList();
+            var globalPerms = permWriter.getPermissionsList(userId);
             globalPermissions = globalPerms;
         }
 

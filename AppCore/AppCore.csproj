@@ -75,6 +75,9 @@
     <Compile Include="LanguageSelection\language.cs" />
     <Compile Include="PermissionControl\permissionControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\AbortableBackgroundWorker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Tools\closureCode.cs" />
     <Compile Include="Tools\tools.cs" />
     <Compile Include="UserControl\GlobalProperties.cs" />

@@ -30,6 +30,8 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eventType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorMsg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -41,6 +43,8 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.timeStamp,
+            this.eventType,
+            this.userName,
             this.errorMsg});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -57,12 +61,26 @@
             this.timeStamp.ReadOnly = true;
             this.timeStamp.Width = 300;
             // 
+            // eventType
+            // 
+            this.eventType.FillWeight = 50F;
+            this.eventType.HeaderText = "Event Type";
+            this.eventType.Name = "eventType";
+            this.eventType.ReadOnly = true;
+            // 
+            // userName
+            // 
+            this.userName.FillWeight = 50F;
+            this.userName.HeaderText = "User Name";
+            this.userName.Name = "userName";
+            this.userName.ReadOnly = true;
+            // 
             // errorMsg
             // 
             this.errorMsg.HeaderText = "Message";
             this.errorMsg.Name = "errorMsg";
             this.errorMsg.ReadOnly = true;
-            this.errorMsg.Width = 1000;
+            this.errorMsg.Width = 900;
             // 
             // EventViewer
             // 
@@ -82,6 +100,8 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeStamp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eventType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userName;
         private System.Windows.Forms.DataGridViewTextBoxColumn errorMsg;
     }
 }
