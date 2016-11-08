@@ -15,7 +15,7 @@ namespace AppCore.DebugGUI
             var eventHandler = new AppEvent.appEvent(AppSettings.AppSettings.appEventsPath);
             foreach(AppEvent.appEvent.appEventEntry entry in eventHandler.getEvents())
             {
-                string[] newRow = new string[] { entry.timeStamp, entry.entryType, entry.userName, entry.error };
+                string[] newRow = new string[] { entry.timeStamp, entry.entryType, entry.userName, entry.compName, entry.error };
                 dataGridView1.Rows.Add(newRow);
             }
         }

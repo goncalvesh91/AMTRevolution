@@ -36,7 +36,7 @@ namespace AppCore.FileWriter
             }
             catch(Exception getPermEx)
             {
-                eventHandler.addAppEvent(DateTime.Now, "Error", userId, "Failed to read the permissions file" + Environment.NewLine + getPermEx.Message);
+                eventHandler.addAppEvent(DateTime.Now, "Error", userId, Environment.MachineName, "Failed to read the permissions file" + Environment.NewLine + getPermEx.Message);
                 return null;
             }
         }
@@ -64,7 +64,7 @@ namespace AppCore.FileWriter
             catch (Exception ex)
             {
                 var eventHandler = new AppEvent.appEvent(AppSettings.AppSettings.appEventsPath);
-                eventHandler.addAppEvent(DateTime.Now, "Error", this.userName, "Failed to generate permissions files");
+                eventHandler.addAppEvent(DateTime.Now, "Error", this.userName, Environment.MachineName, "Failed to generate permissions files");
                 return false;
             }
         }

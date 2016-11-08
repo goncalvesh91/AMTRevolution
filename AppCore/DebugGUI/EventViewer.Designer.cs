@@ -32,6 +32,7 @@
             this.timeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eventType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.machineName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorMsg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -45,13 +46,14 @@
             this.timeStamp,
             this.eventType,
             this.userName,
+            this.machineName,
             this.errorMsg});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(1468, 812);
+            this.dataGridView1.Size = new System.Drawing.Size(1368, 712);
             this.dataGridView1.TabIndex = 0;
             // 
             // timeStamp
@@ -75,18 +77,24 @@
             this.userName.Name = "userName";
             this.userName.ReadOnly = true;
             // 
+            // machineName
+            // 
+            this.machineName.HeaderText = "Computer";
+            this.machineName.Name = "machineName";
+            this.machineName.ReadOnly = true;
+            // 
             // errorMsg
             // 
             this.errorMsg.HeaderText = "Message";
             this.errorMsg.Name = "errorMsg";
             this.errorMsg.ReadOnly = true;
-            this.errorMsg.Width = 900;
+            this.errorMsg.Width = 700;
             // 
             // EventViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1468, 812);
+            this.ClientSize = new System.Drawing.Size(1368, 712);
             this.Controls.Add(this.dataGridView1);
             this.Name = "EventViewer";
             this.Text = "EventViewer";
@@ -102,6 +110,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn timeStamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn eventType;
         private System.Windows.Forms.DataGridViewTextBoxColumn userName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn machineName;
         private System.Windows.Forms.DataGridViewTextBoxColumn errorMsg;
     }
 }

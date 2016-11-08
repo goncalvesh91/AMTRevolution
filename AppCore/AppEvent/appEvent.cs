@@ -33,7 +33,7 @@ namespace AppCore.AppEvent
 
         public bool routineEventBackupToShare(string userId)
         {
-            if (Directory.Exists(AppSettings.AppSettings.appEventsNetworkPath))
+            if (Directory.Exists(AppSettings.AppSettings.appEventsNetworkPath + "\\" + userId.ToUpper()))
             {
                 try
                 {
@@ -43,17 +43,17 @@ namespace AppCore.AppEvent
                 catch (Exception evBckEx)
                 {
                     var eventHandler = new appEvent(AppSettings.AppSettings.appEventsPath);
-                    eventHandler.addAppEvent(DateTime.Now, "Error", userId, "Failed to backup events to share drive");
+                    eventHandler.addAppEvent(DateTime.Now, "Error", userId, Environment.MachineName, "Failed to backup events to share drive");
                     return false;
                 }
             }
             return false;
         }
 
-        public bool addAppEvent(DateTime timeStamp, string eventType, string userName, string error)
+        public bool addAppEvent(DateTime timeStamp, string eventType, string userName, string computerName, string error)
         {
             // New event
-            var nEvent = new appEventEntry(timeStamp, eventType, userName, error);
+            var nEvent = new appEventEntry(timeStamp, eventType, userName, computerName,  error);
             var eventFile = new List<appEventEntry>();
             try
             {
@@ -96,14 +96,17 @@ namespace AppCore.AppEvent
             public string entryType;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
             public string userName;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
+            public string compName;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 15000)]
             public string error;
 
-            public appEventEntry(DateTime _timeStamp, string _entryType, string _userName, string _error)
+            public appEventEntry(DateTime _timeStamp, string _entryType, string _userName, string _compName, string _error)
             {
                 this.timeStamp = _timeStamp.ToString();
                 this.entryType = _entryType;
                 this.userName = _userName;
+                this.compName = _compName;
                 this.error = _error;
             }
         }
