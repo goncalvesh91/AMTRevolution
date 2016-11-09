@@ -13,19 +13,21 @@ namespace AppCore.FileWriter
     public class permissionsWriter
     {
         private string userName { get; set; }
+        AppEvent.appEvent eventHandler;
         public permissionsWriter()
         {
+        	eventHandler = new AppEvent.appEvent(AppSettings.AppSettings.appEventsPath);
             // Check if permissions file exists, if not create it
             if (!File.Exists(AppSettings.AppSettings.permissionsFilePath))
             {
                 generatePermissionsFile(AppSettings.AppSettings.permissionsFilePath);
+                eventHandler.addAppEvent(DateTime.Now, "Notification", this.userName, Environment.MachineName, "Generated permissions file");
             }
         }
 
         public List<userPermission> getPermissionsList(string userId)
         {
             userName = userId;
-            var eventHandler = new AppEvent.appEvent(AppSettings.AppSettings.appEventsPath);
             try
             {
                 var file = File.OpenRead(AppSettings.AppSettings.permissionsFilePath);
@@ -63,7 +65,6 @@ namespace AppCore.FileWriter
             }
             catch (Exception ex)
             {
-                var eventHandler = new AppEvent.appEvent(AppSettings.AppSettings.appEventsPath);
                 eventHandler.addAppEvent(DateTime.Now, "Error", this.userName, Environment.MachineName, "Failed to generate permissions files");
                 return false;
             }

@@ -138,7 +138,7 @@ namespace AMTRevolution
 
         private void ShowHideMenu(string Storyboard, Grid pnl)
         {
-            Storyboard sb = Resources[Storyboard] as Storyboard;
+            var sb = Resources[Storyboard] as Storyboard;
             AppSettings.mainMenuState = true;
             sb.Begin(pnl);
         }

@@ -3,9 +3,8 @@
 // Rui Gonçalves
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Runtime.InteropServices;
 
 namespace AppCore.UserLogs
 {
@@ -14,9 +13,9 @@ namespace AppCore.UserLogs
     /// </summary>
     class UserLogs
     {
-        public UserLogs(string path)
+        public UserLogs()
         {
-
         }
+
     }
 }

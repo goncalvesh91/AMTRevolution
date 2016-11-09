@@ -83,7 +83,6 @@
     <Compile Include="Tools\closureCode.cs" />
     <Compile Include="Tools\tools.cs" />
     <Compile Include="UserControl\GlobalProperties.cs" />
-    <Compile Include="UserControl\SettingsFile.cs" />
     <Compile Include="UserControl\UserControl.cs" />
     <Compile Include="UserControl\UserSettings.cs" />
     <Compile Include="UserLogs\UserLogs.cs" />
