@@ -35,6 +35,7 @@ namespace AMTRevolution
                     timer.Interval = 300000;
                     timer.Enabled = true;
                 };
+                bgWokerEvl.RunWorkerAsync();
             }
         }
 
@@ -43,6 +44,8 @@ namespace AMTRevolution
             var eventHandler = new appEvent(AppSettings.appEventsPath);
             if (eventHandler.routineEventBackupToShare(AppCore.UserControl.UserControl.userName))
                 eventHandler.addAppEvent(DateTime.Now, "Notification", AppCore.UserControl.UserControl.userName, Environment.MachineName, "AppEvent backup to share performed");
+            else
+            	eventHandler.addAppEvent(DateTime.Now, "Error", AppCore.UserControl.UserControl.userName, Environment.MachineName, "AppEvent backup to share failed");
         }
 
         #region bttActions
@@ -107,10 +110,10 @@ namespace AMTRevolution
 
         private void detachCcBtt_Click(object sender, RoutedEventArgs e)
         {
-            ShowHideMenu("hideCCPanel", closureCodePanel);
             ccBtt.IsEnabled = true;
             var ccBox = new ClosureCode(incCcTxtBox.Text, initCcTxtBox.Text, CcTxtBox.Text);
             ccBox.Show(this);
+            ShowHideMenu("hideCCPanel", closureCodePanel);
         }
 
         private void minCcBtt_Click(object sender, RoutedEventArgs e)

@@ -37,7 +37,7 @@ namespace AppCore.AppEvent
             {
                 try
                 {
-                    File.Copy(AppSettings.AppSettings.appEventsPath, AppSettings.AppSettings.appEventsNetworkPath);
+                    File.Copy(AppSettings.AppSettings.appEventsPath, AppSettings.AppSettings.appEventsNetworkPath + "\\" + userId.ToUpper() + "\\AppEventLog.xbin");
                     return true;
                 }
                 catch (Exception evBckEx)
