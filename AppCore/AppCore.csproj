@@ -28,6 +28,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -61,7 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppCore.cs" />
     <Compile Include="AppSettings\AppSettings.cs" />
     <Compile Include="AppEvent\appEvent.cs" />
     <Compile Include="DebugGUI\EventViewer.cs">
@@ -71,6 +72,7 @@
       <DependentUpon>EventViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="FileWriter\permissionsWriter.cs" />
+    <Compile Include="FileWriter\userLogsWriter.cs" />
     <Compile Include="FileWriter\userSettingsWriter.cs" />
     <Compile Include="LanguageSelection\language.cs" />
     <Compile Include="PermissionControl\permissionControl.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="UserControl\SettingsFile.cs" />
     <Compile Include="UserControl\UserControl.cs" />
     <Compile Include="UserControl\UserSettings.cs" />
+    <Compile Include="UserLogs\UserLogs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="LanguageSelection\Languages\AMTRevLangPT.xml" />
